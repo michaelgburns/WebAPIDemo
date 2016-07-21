@@ -32,10 +32,10 @@ namespace WebAPIDemo.Models
             return db.Orders.Include("OrderDetails");
         }
 
-        public Order GetAllOrdersWithDetails(int Id)
+        public Order GetOrder(int Id)
         {
             return db.Orders.Include("OrderDetails.Book").FirstOrDefault(o => o.Id == Id);
-        }
+        }        
 
         #endregion
     }

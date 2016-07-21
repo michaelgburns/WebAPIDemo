@@ -64,7 +64,6 @@ namespace WebAPIDemo.App_Start
         {
             kernel.Bind<IRepository>().To<Repository>().InRequestScope();
             kernel.Bind<WebAPIDemoContext>().To<WebAPIDemoContext>().InRequestScope();
-
         }        
     }
 }

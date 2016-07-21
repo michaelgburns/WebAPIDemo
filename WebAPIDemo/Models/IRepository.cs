@@ -6,6 +6,6 @@ namespace WebAPIDemo.Models
     {
         IQueryable<Order> GetAllOrders();
         IQueryable<Order> GetAllOrdersWithDetails();
-        Order GetAllOrdersWithDetails(int Id);
+        Order GetOrder(int Id);
     }
 }
