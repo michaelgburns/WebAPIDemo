@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Breeze.ContextProvider.EF6;
 
 namespace WebAPIDemo.Models
 {
@@ -6,37 +7,45 @@ namespace WebAPIDemo.Models
     {
         #region Members
 
-        private WebAPIDemoContext db;
+        //private WebAPIDemoContext db;
+        private readonly EFContextProvider<WebAPIDemoContext> _contextProvider = new EFContextProvider<WebAPIDemoContext>();
 
         #endregion
 
 
-        #region Constructor
+        //#region Constructor
 
-        public Repository(WebAPIDemoContext db)
-        {
-            this.db = db;
-        }
+        //public Repository(WebAPIDemoContext db)
+        //{
+        //    this.db = db;
+        //}
 
-        #endregion
+        //#endregion
 
         #region methods
 
-        public IQueryable<Order> GetAllOrders()
-        {
-            return db.Orders;
-        }
-
-        public IQueryable<Order> GetAllOrdersWithDetails()
-        {            
-            return db.Orders.Include("OrderDetails");
-        }
-
-        public Order GetOrder(int Id)
-        {
-            return db.Orders.Include("OrderDetails.Book").FirstOrDefault(o => o.Id == Id);
-        }        
+        
 
         #endregion
+
+        public string MetaData
+        {
+            get { return _contextProvider.Metadata(); }
+        }
+
+        public Breeze.ContextProvider.SaveResult SaveChanges(Newtonsoft.Json.Linq.JObject saveBundle)
+        {
+            return _contextProvider.SaveChanges(saveBundle);
+        }
+
+        public IQueryable<Book> Books()
+        {
+            return _contextProvider.Context.Books;
+        }
+
+        public IQueryable<Order> Orders()
+        {
+            return _contextProvider.Context.Orders;
+        }
     }
 }
