@@ -10,7 +10,7 @@ namespace WebAPIDemo.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using WebAPIDemo.Models;
+    using Models;
 
     public static class NinjectWebCommon 
     {
@@ -64,6 +64,6 @@ namespace WebAPIDemo.App_Start
         {
             kernel.Bind<IRepository>().To<Repository>().InRequestScope();
             kernel.Bind<WebAPIDemoContext>().To<WebAPIDemoContext>().InRequestScope();
-        }        
+        }
     }
 }
