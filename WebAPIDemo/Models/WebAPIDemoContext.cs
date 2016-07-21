@@ -23,7 +23,7 @@ namespace WebAPIDemo.Models
 
         public DbSet<Order> Orders { get; set; }
 
-        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     
     }
 }
