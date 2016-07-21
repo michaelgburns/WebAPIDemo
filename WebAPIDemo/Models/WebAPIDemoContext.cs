@@ -19,7 +19,11 @@ namespace WebAPIDemo.Models
         {
         }
 
-        public System.Data.Entity.DbSet<WebAPIDemo.Models.Book> Books { get; set; }
+        public DbSet<Book> Books { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<OrderDetail> OrderDetail { get; set; }
     
     }
 }
