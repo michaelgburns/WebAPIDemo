@@ -10,6 +10,7 @@ namespace WebAPIDemo.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using WebAPIDemo.Models;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +62,9 @@ namespace WebAPIDemo.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind<IRepository>().To<Repository>().InRequestScope();
+            kernel.Bind<WebAPIDemoContext>().To<WebAPIDemoContext>().InRequestScope();
+
         }        
     }
 }
